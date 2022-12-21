@@ -1,0 +1,12 @@
+---
+#este playbook estará chamando as roles especificas para cada configuração necessária
+- hosts: all
+  become: yes
+  roles:
+   #base config
+    - ServerTools
+    - CreateUsers
+   #aplication config
+   # - php
+   #  - nginx
+    

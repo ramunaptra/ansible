@@ -1,0 +1,20 @@
+---
+# tasks file for php
+- name: "Installing the ppa:ondrej/php repo on Ubuntu systems"
+  apt_repository:
+    repo: ppa:ondrej/php
+    update_cache: true
+    #when: ansible_distribution == 'Ubuntu'
+- name: "Installing php packages to the host(s)"
+  apt:
+    name:
+      - "php8.0-fpm"         
+      - "php8.0-cli"
+      - "php8.0-curl"
+      #- "php8.1-mysql"
+      #- "php8.1-mbstring"
+      #- "php8.1-mcrypt"
+      #- "php8.1-common"
+      #- "php8.1-json"
+      #- "php8.1-dev"
+    state: present #absent

@@ -1,0 +1,28 @@
+---
+# tasks file for CreateUsers
+  - name: "create user Michael"
+    vars:
+      mypassword: "mikefern"
+    ansible.builtin.user:
+      name: michael_vicente
+      shell: /bin/bash
+      state: present
+      password: "{{ mypassword | password_hash('sha512') }}"
+      create_home: true
+      generate_ssh_key: true
+      groups: sudo, michael_vicente
+      append: yes
+    #when: (ansible_facts['distribution'] == 'Ubuntu')
+  - name: "create user Wellyngton"
+    vars:
+      mypassword: "wellyngton"
+    ansible.builtin.user:
+      name: wellyngton_douglas
+      shell: /bin/bash
+      state: present
+      password: "{{ mypassword | password_hash('sha512') }}"
+      create_home: true
+      generate_ssh_key: true
+      groups: sudo, wellyngton_douglas
+      append: yes
+    #when: (ansible_facts['distribution'] == 'Ubuntu')
